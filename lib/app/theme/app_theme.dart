@@ -15,7 +15,7 @@ abstract final class AppTheme {
       useMaterial3: true, // Se utiliza para habilitar el uso de Material 3
       colorScheme: colorScheme, // Se utiliza para aplicar el color scheme de la aplicación
       scaffoldBackgroundColor: AppColors.lightBackground, // Color de fondo de la aplicación
-      textTheme: AppTextTheme.build(light().textTheme), // Se utiliza para aplicar el text theme de la aplicación
+      textTheme: AppTextTheme.build(ThemeData(brightness: Brightness.light).textTheme), // Se utiliza para aplicar el text theme de la aplicación
       appBarTheme: AppBarTheme(
         centerTitle: false, // Centra el título de la barra de navegación
         backgroundColor: colorScheme.surface, // Color de fondo de la barra de navegación
@@ -42,7 +42,7 @@ abstract final class AppTheme {
       useMaterial3: true, // Se utiliza para habilitar el uso de Material 3
       colorScheme: colorScheme, // Se utiliza para aplicar el color scheme de la aplicación
       scaffoldBackgroundColor: AppColors.darkBackground, // Color de fondo de la aplicación
-      textTheme: AppTextTheme.build(dark().textTheme), // Se utiliza para aplicar el text theme de la aplicación
+      textTheme: AppTextTheme.build(ThemeData(brightness: Brightness.dark).textTheme), // Se utiliza para aplicar el text theme de la aplicación
       appBarTheme: AppBarTheme(
         centerTitle: false, // Centra el título de la barra de navegación
         backgroundColor: colorScheme.surface, // Color de fondo de la barra de navegación
