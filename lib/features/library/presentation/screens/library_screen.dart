@@ -38,28 +38,26 @@ class _LibraryScreenState extends ConsumerState<LibraryScreen> {
   Widget build(BuildContext context) {
     final libraryState = ref.watch(libraryProvider);
 
-    return Scaffold(
-      appBar: AppBar(title: const Text('Mi Biblioteca')),
-      body: libraryState.when(
-        loading: () => const Center(child: CircularProgressIndicator()),
-        error:   (e, _) => Center(child: Text('Error: $e')),
-        data:    (state) => RefreshIndicator(
-          onRefresh: () => ref.read(libraryProvider.notifier).refresh(),
-          child: ListView.builder(
-            controller: _scrollController,
-            itemCount: state.items.length + (state.isLoadingMore ? 1 : 0),
-            itemBuilder: (context, index) {
-              if (index == state.items.length) {
-                return const Padding(
-                  padding: EdgeInsets.all(16),
-                  child: Center(child: CircularProgressIndicator()),
-                );
-              }
-              return MediaCard(entry: state.items[index]);
-            },
+    return libraryState.when(
+      loading: () => const Center(child: CircularProgressIndicator()),
+      error: (e, _) => Center(child: Text('Error: $e')),
+      data:
+          (state) => RefreshIndicator(
+            onRefresh: () => ref.read(libraryProvider.notifier).refresh(),
+            child: ListView.builder(
+              controller: _scrollController,
+              itemCount: state.items.length + (state.isLoadingMore ? 1 : 0),
+              itemBuilder: (context, index) {
+                if (index == state.items.length) {
+                  return const Padding(
+                    padding: EdgeInsets.all(16),
+                    child: Center(child: CircularProgressIndicator()),
+                  );
+                }
+                return MediaCard(entry: state.items[index]);
+              },
+            ),
           ),
-        ),
-      ),
     );
   }
 }

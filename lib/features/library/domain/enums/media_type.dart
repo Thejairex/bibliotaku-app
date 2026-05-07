@@ -5,8 +5,10 @@ enum MediaType {
   manhua,
   novel;
 
-  static MediaType fromJson(String value) =>
-      MediaType.values.firstWhere((e) => e.name == value);
+  static MediaType fromJson(String value) => MediaType.values.firstWhere(
+    (e) => e.name == value,
+    orElse: () => throw Exception('Unknown MediaType: $value'),
+  );
 
   String get label => switch (this) {
     MediaType.anime => 'Anime',
