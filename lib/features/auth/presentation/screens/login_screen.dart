@@ -43,11 +43,11 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
     final authState = ref.watch(authProvider);
 
     // Redirige cuando el login es exitoso
-    ref.listen(authProvider, (_, next) {
-      if (next.value == AuthStatus.authenticated) {
-        context.go(AppRoutes.home);
-      }
-    });
+    // ref.listen(authProvider, (_, next) {
+    //   if (next.value == AuthStatus.authenticated) {
+    //     context.go(AppRoutes.home);
+    //   }
+    // });
 
     return Scaffold(
       body: SafeArea( // Se utiliza SafeArea para evitar que el contenido se superponga con elementos de la interfaz de usuario
